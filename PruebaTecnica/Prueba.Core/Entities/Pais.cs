@@ -10,7 +10,7 @@ namespace Prueba.Core.Entities
         public string Nombre { get; set; }
         public string Alpha3Code { get; set; }
         public string Iso31662 { get; set; }
-        public List<Equipo> Equipo { get; set; }
+        public virtual List<Equipo> Equipos { get; set; }
     }
 }
 

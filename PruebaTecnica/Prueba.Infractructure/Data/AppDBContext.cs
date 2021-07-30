@@ -22,9 +22,9 @@ namespace Prueba.Infractructure.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());            
-            modelBuilder.Entity<Equipo>().HasMany(e => e.Jugador).WithOne();            
-            modelBuilder.Entity<Jugador>().HasOne(j => j.Equipo).WithMany();
-            modelBuilder.Entity<Pais>().HasMany(p => p.Equipo);
+            modelBuilder.Entity<Equipo>().HasMany(e => e.Jugadores).WithOne();            
+            modelBuilder.Entity<Jugador>().HasMany(j => j.Equipos).WithMany(p => p.Jugadores);
+            modelBuilder.Entity<Pais>().HasMany(p => p.Equipos);
         }
     } 
 }

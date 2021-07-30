@@ -1,4 +1,6 @@
-﻿namespace Prueba.Core.Entities
+﻿using System.Collections.Generic;
+
+namespace Prueba.Core.Entities
 {
     public class Jugador
     {
@@ -11,7 +13,7 @@
         public string Sexo { get; set; }
         public int IdEquipo { get; set; }
         public int EstadoId { get; set; }  //(Activo, Cancelado, Agente Libre)
-        public Equipo Equipo { get; set; }
+        public virtual List<Equipo> Equipos { get; set; }
         public Estado Estado { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Prueba.Core.Entities
         public int PaisId { get; set; }
         public int EstadoId { get; set; }
         public int JugadorId { get; set; }
-        public List<Jugador> Jugador { get; set; }
+        public virtual List<Jugador> Jugadores { get; set; }
         public Estado Estado { get; set; }
         public Pais Pais { get; set; }
 
