@@ -5,11 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.8" />
+    <ProjectReference Include="..\Prueba.Core\Prueba.Core.csproj" />
+    <ProjectReference Include="..\Prueba.Infractructure\Prueba.Infractructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\" />
-  </ItemGroup>
 
 </Project>
