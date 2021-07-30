@@ -29,5 +29,22 @@ namespace Prueba.Infractructure.Repositories
             var estado = await _appDBContext.Estado.ToListAsync();
             return estado;
         }
+        public async Task InsertEstado(Estado estado)
+        {
+            try
+            {
+                _appDBContext.Add(estado);
+                await _appDBContext.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+               //set error message here
+            }
+        }
+
+        Task<Estado> IEstadoRepository.InsertEstado(Estado estado)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

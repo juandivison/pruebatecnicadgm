@@ -18,15 +18,21 @@ namespace Prueba.Infractructure.Repositories
         {
             this._appDBContext = appDBContext;
         }
-        public async Task<IEnumerable<Estado>> GetEstados()
+
+        public Task<IEnumerable<Estado>> GetEstados()
         {
-            var estado = await _appDBContext.Estado.ToListAsync();
-            return estado;
+            throw new NotImplementedException();
         }
-        public async Task<Estado> GetEstados(int id)
+
+        public Task<Estado> GetEstados(int id)
         {
-            var estado = await _appDBContext.Estado.FirstOrDefaultAsync(x => x.Id == id);
-            return estado;
+            throw new NotImplementedException();
         }
+
+        public Task<Estado> InsertEstado(Estado estado)
+        {
+            throw new NotImplementedException();
+        } 
+
     }
 }

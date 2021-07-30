@@ -10,6 +10,6 @@ namespace Prueba.Core.Interfaces
     {
         Task<IEnumerable<Estado>> GetEstados();
         Task<Estado> GetEstados(int id);
-        
+        Task<Estado> InsertEstado(Estado estado);        
     }
 }

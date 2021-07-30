@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Prueba.Infractructure.Repositories
 {
-    class JuagadorRepository
+    class JugadorRepository
     {
     }
 }
