@@ -21,5 +21,11 @@ namespace PruebaAPI.Controllers
             var estado = await  _estadoRepository.GetEstados();            
             return Ok(estado);
         }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEstados(int id)
+        {
+            var estado = await _estadoRepository.GetEstados(id);
+            return Ok(estado);
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace Prueba.Core.Interfaces
     public interface  IEstadoRepository
     {
         Task<IEnumerable<Estado>> GetEstados();
+        Task<Estado> GetEstados(int id);
+        
     }
 }

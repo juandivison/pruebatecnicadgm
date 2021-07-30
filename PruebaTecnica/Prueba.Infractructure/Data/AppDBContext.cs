@@ -15,8 +15,8 @@ namespace Prueba.Infractructure.Data
 
         }
 
-        public virtual DbSet<Equipo> Equipos { get; set; }
-        public virtual DbSet<Estado> Etadoss { get; set; }
+        public virtual DbSet<Equipo> Equipo { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
         public virtual DbSet<Jugador> Jugador { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -1,5 +1,7 @@
-﻿using Prueba.Core.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Prueba.Core.Entities;
 using Prueba.Core.Interfaces;
+using Prueba.Infractructure.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +12,22 @@ namespace Prueba.Infractructure.Repositories
 {
     public class EstadoRespository : IEstadoRepository
     {
+        private readonly AppDBContext _appDBContext;
+
+        public EstadoRespository(AppDBContext appDBContext)
+        {
+            this._appDBContext = appDBContext;
+        }
+        public async Task<Estado> GetEstados(int id)
+        {
+            var estado = await _appDBContext.Estado.FirstOrDefaultAsync(x => x.Id == id);
+            return estado;
+        }
+
         public async Task<IEnumerable<Estado>> GetEstados()
         {
-            var estados = Enumerable.Range(1, 10).Select(x => new Estado
-            {
-                Id = x,
-                Nombre = $"Test {x}"
-            });
-            await Task.Delay(10);
-            return estados;
+            var estado = await _appDBContext.Estado.ToListAsync();
+            return estado;
         }
     }
 }
