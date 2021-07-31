@@ -10,7 +10,7 @@ using Prueba.Infractructure.Data;
 namespace PruebaTecnica.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20210730174201_InicioMigracion")]
+    [Migration("20210730222415_InicioMigracion")]
     partial class InicioMigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
