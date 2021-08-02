@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace WebApi.Prueba.Models
 {
@@ -14,10 +11,10 @@ namespace WebApi.Prueba.Models
         {
 
         }
-        public virtual DbSet<Equipo> Equipo { get; set; }
-        public virtual DbSet<Estado> Estado { get; set; }
-        public virtual DbSet<Jugador> Jugador { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
+        public virtual DbSet<Estado> Estado { get; set; }
+        public virtual DbSet<Equipo> Equipo { get; set; }        
+        public virtual DbSet<Jugador> Jugador { get; set; }        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,8 +28,12 @@ namespace WebApi.Prueba.Models
                 fk.DeleteBehavior = DeleteBehavior.Restr­ict;
             }
 
+            modelBuilder.Entity<Jugador>().HasRequired(w => w.Equipo).WithMany()
+            .Map(m => m.MapKey("FK_Sections_Documents"));
+
+
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            modelBuilder.Entity<Equipo>().HasMany(e => e.Jugadores).WithOne();
+            modelBuilder.Entity<Equipo>().HasMany(e => e.Jugadores);
             modelBuilder.Entity<Jugador>().HasMany(j => j.Equipos);
             modelBuilder.Entity<Pais>().HasMany(p => p.Equipos);
         }

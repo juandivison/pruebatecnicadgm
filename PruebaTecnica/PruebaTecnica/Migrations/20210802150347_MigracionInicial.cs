@@ -2,7 +2,7 @@
 
 namespace PruebaTecnica.Migrations
 {
-    public partial class InicioMigracion : Migration
+    public partial class MigracionInicial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
