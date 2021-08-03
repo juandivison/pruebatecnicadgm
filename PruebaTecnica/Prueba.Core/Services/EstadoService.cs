@@ -14,20 +14,14 @@ namespace Prueba.Core.Services
         public EstadoService(IUnitOfWork unitOfWork)
         {
             _unitOfWork  = unitOfWork;
-        }
-
-        public bool DeleteEstado(int id)
-        {
-            _unitOfWork.EstadoRepository.Delete(id);
-            return true;
-        }
+        }              
 
         public Task<Estado> GetEstado(int id)
         {
             return _unitOfWork.EstadoRepository.GetById(id);
         }
 
-        public async Task<IEnumerable<Estado>> GetEstados()
+        public IEnumerable<Estado> GetEstados()
         {
             return _unitOfWork.EstadoRepository.GetAll();
         }
@@ -35,12 +29,21 @@ namespace Prueba.Core.Services
         public async Task InsertEstado(Estado estado)
         {
             await _unitOfWork.EstadoRepository.Add(estado);
+            await _unitOfWork.SaveChangesAsync();
         }
 
         public bool UpdateEstado(Estado estado)
         {
             _unitOfWork.EstadoRepository.Update(estado);
+            _unitOfWork.SaveChanges();
             return  true;
         }
+        public bool DeleteEstado(int id)
+        {
+            _unitOfWork.EstadoRepository.Delete(id);
+            _unitOfWork.SaveChanges();
+            return true;
+        }
+
     }
 }

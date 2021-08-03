@@ -33,20 +33,17 @@ namespace Prueba.Infractructure.Repositories
 
         public async Task Add(T entity)
         {
-            await _entities.AddAsync(entity);
-            _context.SaveChanges();
+            await _entities.AddAsync(entity);            
         }
 
         public void Update(T entity)
         {
-            _entities.Update(entity);
-            _context.SaveChanges();
+            _entities.Update(entity);            
         }
         public async Task Delete(int id)
         {
             T entity = await GetById(id);
-            _entities.Remove(entity);            
-            _context.SaveChanges();
+            _entities.Remove(entity);                        
         }
     }
 }

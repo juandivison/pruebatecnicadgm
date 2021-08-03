@@ -7,13 +7,8 @@ using System.Threading.Tasks;
 
 namespace Prueba.Core.Interfaces
 {
-    public interface  IEstadoRepository
+    public interface  IEstadoRepository : IRepository<Estado>
     {
         Task<IEnumerable<Estado>> GetEstados();
-        Task<Estado> GetEstado(int id);
-        Task InsertEstado(Estado estado);
-        Task<bool> UpdateEstado(Estado estado);
-
-        Task<bool> DeleteEstado(int id);
     }
 }

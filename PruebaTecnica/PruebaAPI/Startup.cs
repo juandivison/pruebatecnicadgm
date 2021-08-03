@@ -46,6 +46,7 @@ namespace PruebaAPI
 
             //services.AddTransient<IEstadoRepository, EstadoRespository>();
             services.AddTransient<IEstadoService, EstadoService>();
+            //services.AddTransient<IEquipoService, EquipoService>();
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
             services.AddTransient<IUnitOfWork, IUnitOfWork>();
 

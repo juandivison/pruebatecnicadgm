@@ -28,9 +28,9 @@ namespace PruebaAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetEstados()
+        public IActionResult GetEstados()
         {
-            var estado = await  _estadoService.GetEstados();
+            var estado = _estadoService.GetEstados();
             var estadodto = _mapper.Map<IEnumerable<EstadoDto>>(estado);
             
             return Ok(estadodto);
@@ -54,7 +54,7 @@ namespace PruebaAPI.Controllers
             return Ok(response);
         }
         [HttpPut]
-        public async Task<IActionResult> Update(int id, EstadoDto estadoDto)
+        public IActionResult Update(int id, EstadoDto estadoDto)
         {
             var estado = _mapper.Map<Estado>(estadoDto);
             estado.Id = id;
@@ -64,7 +64,7 @@ namespace PruebaAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public IActionResult Delete(int id)
         {            
             var result = _estadoService.DeleteEstado(id);
             var response = new ApiResponse<bool>(result);

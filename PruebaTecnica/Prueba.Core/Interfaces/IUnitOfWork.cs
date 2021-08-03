@@ -9,7 +9,9 @@ namespace Prueba.Core.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Estado> EstadoRepository { get; }
+        IRepository<Equipo> EquipoRepository { get; }
         IRepository<Jugador> JugadorRepository { get; }
+        IRepository<Pais> PaisRepository { get; }
         //IRepository<Estado> EstadoRepository { get; }
 
         void SaveChanges();
