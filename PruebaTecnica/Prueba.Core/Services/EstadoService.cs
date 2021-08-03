@@ -9,35 +9,38 @@ namespace Prueba.Core.Services
 {
     public class EstadoService : IEstadoService
     {
-        private readonly IEstadoService _estadoService;
-        public EstadoService(IEstadoService estadoService)
+        private readonly IUnitOfWork _unitOfWork;
+        //private readonly IRepository<Estado> _estadoService;
+        public EstadoService(IUnitOfWork unitOfWork)
         {
-            _estadoService = estadoService;
+            _unitOfWork  = unitOfWork;
         }
 
-        public async Task<bool> DeleteEstado(int id)
+        public bool DeleteEstado(int id)
         {
-            return await _estadoService.DeleteEstado(id);
+            _unitOfWork.EstadoRepository.Delete(id);
+            return true;
         }
 
-        public async  Task<Estado> GetEstado(int id)
+        public Task<Estado> GetEstado(int id)
         {
-            return await _estadoService.GetEstado(id);
+            return _unitOfWork.EstadoRepository.GetById(id);
         }
 
-        public async  Task<IEnumerable<Estado>> GetEstados()
+        public async Task<IEnumerable<Estado>> GetEstados()
         {
-            return await _estadoService.GetEstados();
+            return _unitOfWork.EstadoRepository.GetAll();
         }
 
         public async Task InsertEstado(Estado estado)
         {
-            await _estadoService.InsertEstado(estado);
+            await _unitOfWork.EstadoRepository.Add(estado);
         }
 
-        public async Task<bool> UpdateEstado(Estado estado)
+        public bool UpdateEstado(Estado estado)
         {
-           return await _estadoService.UpdateEstado(estado);
+            _unitOfWork.EstadoRepository.Update(estado);
+            return  true;
         }
     }
 }

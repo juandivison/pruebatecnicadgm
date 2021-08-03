@@ -44,9 +44,11 @@ namespace PruebaAPI
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
-            services.AddTransient<IEstadoRepository, EstadoRespository>();
+            //services.AddTransient<IEstadoRepository, EstadoRespository>();
             services.AddTransient<IEstadoService, EstadoService>();
-            
+            services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            services.AddTransient<IUnitOfWork, IUnitOfWork>();
+
             services.AddMvc(options =>
             {
                 options.Filters.Add<ValidationFilter>();//agregar filtro de forma global

@@ -9,8 +9,7 @@ namespace Prueba.Core.Interfaces
         Task InsertEstado(Estado estado);
         Task<IEnumerable<Estado>> GetEstados();
         Task<Estado> GetEstado(int id);
-        Task<bool> UpdateEstado(Estado estado);
-
-        Task<bool> DeleteEstado(int id);
+        bool UpdateEstado(Estado estado);
+        bool DeleteEstado(int id);
     }
 }

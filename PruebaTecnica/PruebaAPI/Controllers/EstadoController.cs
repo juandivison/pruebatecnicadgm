@@ -49,7 +49,7 @@ namespace PruebaAPI.Controllers
         {   
             var estado = _mapper.Map<Estado>(estadoDto);
             await _estadoService.InsertEstado(estado);
-            estadoDto = _mapper.Map<EstadoDto>(estado);
+            estadoDto = _mapper.Map<EstadoDto>(estado);            
             var response = new ApiResponse<EstadoDto>(estadoDto);
             return Ok(response);
         }
@@ -58,15 +58,15 @@ namespace PruebaAPI.Controllers
         {
             var estado = _mapper.Map<Estado>(estadoDto);
             estado.Id = id;
-            var result = await _estadoService.UpdateEstado(estado);
+            var result =  _estadoService.UpdateEstado(estado);            
             var response = new ApiResponse<bool>(result);
             return Ok(response);            
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {            
-            var result = await _estadoService.DeleteEstado(id);
+            var result = _estadoService.DeleteEstado(id);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }
