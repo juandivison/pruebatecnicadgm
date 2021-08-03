@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Prueba.Core.DTOS;
 using System.Threading.Tasks;
+using PruebaAPI.Responses;
 
 namespace PruebaAPI.Controllers
 {
@@ -39,8 +40,9 @@ namespace PruebaAPI.Controllers
         public async Task<IActionResult> GetEstados(int id)
         {
             var estado = await _estadoRepository.GetEstado(id);
-            var estadodto =  _mapper.Map<IEnumerable<EstadoDto>>(estado);
-            return Ok(estadodto);
+            var estadodtos =  _mapper.Map<IEnumerable<EstadoDto>>(estado);
+            var response = new ApiResponse<IEnumerable<EstadoDto>>(estadodtos);
+            return Ok(response);
         }
 
         [HttpPost]
@@ -48,22 +50,26 @@ namespace PruebaAPI.Controllers
         {   
             var estado = _mapper.Map<Estado>(estadoDto);
             await _estadoRepository.InsertEstado(estado);
-            return Ok(estado);
+            estadoDto = _mapper.Map<EstadoDto>(estado);
+            var response = new ApiResponse<EstadoDto>(estadoDto);
+            return Ok(response);
         }
         [HttpPut]
         public async Task<IActionResult> Update(int id, EstadoDto estadoDto)
         {
             var estado = _mapper.Map<Estado>(estadoDto);
             estado.Id = id;
-            await _estadoRepository.UpdateEstado(estado);
-            return Ok(estado);
+            var result = await _estadoRepository.UpdateEstado(estado);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);            
         }
 
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {            
             var result = await _estadoRepository.DeleteEstado(id);
-            return Ok(result);
+            var response = new ApiResponse<bool>(result);
+            return Ok(response);
         }
 
     }
