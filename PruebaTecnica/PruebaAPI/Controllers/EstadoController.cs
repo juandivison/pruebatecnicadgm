@@ -15,23 +15,22 @@ namespace PruebaAPI.Controllers
     [ApiController]    
     public class EstadoController : ControllerBase
     {
-        private readonly IEstadoRepository _estadoRepository;
+        private readonly IEstadoService _estadoService;
         private readonly AppDBContext _context;
         private readonly IMapper  _mapper;
 
-
-        public EstadoController(AppDBContext context,IEstadoRepository estadoRepository,
+        public EstadoController(AppDBContext context, IEstadoService estadoService,
             IMapper mapper)
         {
             this._context = context;
-            _estadoRepository = estadoRepository;
+            _estadoService = estadoService;
             _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetEstados()
         {
-            var estado = await  _estadoRepository.GetEstados();
+            var estado = await  _estadoService.GetEstados();
             var estadodto = _mapper.Map<IEnumerable<EstadoDto>>(estado);
             
             return Ok(estadodto);
@@ -39,7 +38,7 @@ namespace PruebaAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetEstados(int id)
         {
-            var estado = await _estadoRepository.GetEstado(id);
+            var estado = await _estadoService.GetEstado(id);
             var estadodtos =  _mapper.Map<IEnumerable<EstadoDto>>(estado);
             var response = new ApiResponse<IEnumerable<EstadoDto>>(estadodtos);
             return Ok(response);
@@ -49,7 +48,7 @@ namespace PruebaAPI.Controllers
         public async Task<IActionResult> Post(EstadoDto estadoDto )
         {   
             var estado = _mapper.Map<Estado>(estadoDto);
-            await _estadoRepository.InsertEstado(estado);
+            await _estadoService.InsertEstado(estado);
             estadoDto = _mapper.Map<EstadoDto>(estado);
             var response = new ApiResponse<EstadoDto>(estadoDto);
             return Ok(response);
@@ -59,7 +58,7 @@ namespace PruebaAPI.Controllers
         {
             var estado = _mapper.Map<Estado>(estadoDto);
             estado.Id = id;
-            var result = await _estadoRepository.UpdateEstado(estado);
+            var result = await _estadoService.UpdateEstado(estado);
             var response = new ApiResponse<bool>(result);
             return Ok(response);            
         }
@@ -67,7 +66,7 @@ namespace PruebaAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete(int id)
         {            
-            var result = await _estadoRepository.DeleteEstado(id);
+            var result = await _estadoService.DeleteEstado(id);
             var response = new ApiResponse<bool>(result);
             return Ok(response);
         }

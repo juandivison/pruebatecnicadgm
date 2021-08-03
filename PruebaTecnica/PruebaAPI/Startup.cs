@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Prueba.Core.Interfaces;
+using Prueba.Core.Services;
 using Prueba.Infractructure.Data;
 using Prueba.Infractructure.Filters;
 using Prueba.Infractructure.Repositories;
@@ -44,6 +45,8 @@ namespace PruebaAPI
             );
 
             services.AddTransient<IEstadoRepository, EstadoRespository>();
+            services.AddTransient<IEstadoService, EstadoService>();
+            
             services.AddMvc(options =>
             {
                 options.Filters.Add<ValidationFilter>();//agregar filtro de forma global

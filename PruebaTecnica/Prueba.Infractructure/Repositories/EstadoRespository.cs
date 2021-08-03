@@ -21,7 +21,7 @@ namespace Prueba.Infractructure.Repositories
         }
         public async Task<Estado> GetEstado(int id)
         {
-            var estado = await _appDBContext.Estado.FirstOrDefaultAsync(x => x.Id == id);
+            var estado = await _appDBContext.Estado.FirstOrDefaultAsync((System.Linq.Expressions.Expression<Func<Estado, bool>>)(x => x.Id == id));
             return estado;
         }
 
