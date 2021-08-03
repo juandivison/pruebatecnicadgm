@@ -1,4 +1,5 @@
-﻿using Prueba.Core.Entities;
+﻿using Prueba.Core.DTOS;
+using Prueba.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,10 @@ namespace Prueba.Core.Interfaces
     public interface  IEstadoRepository
     {
         Task<IEnumerable<Estado>> GetEstados();
-        Task<Estado> GetEstados(int id);
-        Task<Estado> InsertEstado(Estado estado);        
+        Task<Estado> GetEstado(int id);
+        Task InsertEstado(Estado estado);
+        Task<bool> UpdateEstado(Estado estado);
+
+        Task<bool> DeleteEstado(int id);
     }
 }

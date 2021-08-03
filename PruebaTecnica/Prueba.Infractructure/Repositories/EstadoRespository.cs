@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Prueba.Core.DTOS;
 using Prueba.Core.Entities;
 using Prueba.Core.Interfaces;
 using Prueba.Infractructure.Data;
@@ -18,7 +19,7 @@ namespace Prueba.Infractructure.Repositories
         {
             this._appDBContext = appDBContext;
         }
-        public async Task<Estado> GetEstados(int id)
+        public async Task<Estado> GetEstado(int id)
         {
             var estado = await _appDBContext.Estado.FirstOrDefaultAsync(x => x.Id == id);
             return estado;
@@ -29,22 +30,29 @@ namespace Prueba.Infractructure.Repositories
             var estado = await _appDBContext.Estado.ToListAsync();
             return estado;
         }
+
         public async Task InsertEstado(Estado estado)
         {
-            try
-            {
-                _appDBContext.Add(estado);
-                await _appDBContext.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-               //set error message here
-            }
+            _appDBContext.Estado.Add(estado);
+            //_appDBContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.estado ON");                        
+            await _appDBContext.SaveChangesAsync();
+            //_appDBContext.Database.ExecuteSqlCommand("SET IDENTITY_INSERT dbo.estado OFF");
         }
 
-        Task<Estado> IEstadoRepository.InsertEstado(Estado estado)
+        public async Task<bool> DeleteEstado(int id)
         {
-            throw new NotImplementedException();
+            var currentEstado = await GetEstado(id);
+            _appDBContext.Estado.Remove(currentEstado);
+            int rows = await _appDBContext.SaveChangesAsync();
+            return rows > 0;
+        }
+
+        public async Task<bool> UpdateEstado(Estado estado)
+        {
+            var currentEstado = await GetEstado(estado.Id);
+            currentEstado.Nombre = estado.Nombre;
+            int rows = await _appDBContext.SaveChangesAsync();
+            return rows > 0;
         }
     }
 }

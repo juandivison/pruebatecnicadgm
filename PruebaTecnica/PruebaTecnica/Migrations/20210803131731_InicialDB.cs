@@ -2,7 +2,7 @@
 
 namespace PruebaTecnica.Migrations
 {
-    public partial class MigracionInicial : Migration
+    public partial class InicialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,8 +10,7 @@ namespace PruebaTecnica.Migrations
                 name: "Estado",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "int", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>

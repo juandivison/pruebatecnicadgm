@@ -10,8 +10,8 @@ using Prueba.Infractructure.Data;
 namespace PruebaTecnica.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20210802150347_MigracionInicial")]
-    partial class MigracionInicial
+    [Migration("20210803131731_InicialDB")]
+    partial class InicialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,9 +57,7 @@ namespace PruebaTecnica.Migrations
             modelBuilder.Entity("Prueba.Core.Entities.Estado", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
