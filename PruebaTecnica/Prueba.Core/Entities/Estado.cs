@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Prueba.Core.Entities
 {
-    public class Estado
+    public class Estado : BaseEntity
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Key]
-        public int Id { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[Key]
+        //public int Id { get; set; }
         public string Nombre { get; set; }
         public virtual List<Equipo> Equipos { get; set; }
     }

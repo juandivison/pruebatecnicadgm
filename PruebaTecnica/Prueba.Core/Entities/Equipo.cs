@@ -4,9 +4,8 @@ using System.Text;
 
 namespace Prueba.Core.Entities
 {
-    public class Equipo
-    {
-        public int Id { get; set; }
+    public class Equipo : BaseEntity
+    {       
         public string Nombre { get; set; }
         public string NombrePaisIso3 { get; set; } // (Codigo de 3 digitos ISO3) (Dropdown)        
         public int PaisId { get; set; }
