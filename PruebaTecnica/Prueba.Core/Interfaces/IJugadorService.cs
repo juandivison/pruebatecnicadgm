@@ -12,8 +12,8 @@ namespace Prueba.Core.Interfaces
         Task<IEnumerable<Jugador>> GetJugadores();
         Task<Jugador> GetJugador(int id);
         Task InsertJugador(Jugador jugador);
-        Task<bool> UpdateJugador(Jugador jugador);
+        bool UpdateJugador(Jugador jugador);
 
-        Task<bool> DeleteJugador(int id);
+        bool DeleteJugador(int id);
     }
 }

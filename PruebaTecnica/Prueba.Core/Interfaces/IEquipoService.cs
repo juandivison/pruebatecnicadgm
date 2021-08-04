@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Prueba.Core.Interfaces
 {
-    interface IEquipoService
+    public interface IEquipoService
     {
         Task InsertEquipo(Equipo equipo);
         IEnumerable<Equipo> GetEquipos();

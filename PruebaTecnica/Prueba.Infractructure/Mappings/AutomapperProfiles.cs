@@ -13,6 +13,14 @@ namespace Prueba.Infractructure.Mappings
         {
             CreateMap<Estado, EstadoDto>();
             CreateMap<EstadoDto, Estado>();
+            CreateMap<Equipo, EquipoDto>();
+            CreateMap <EquipoDto,Equipo> ();
+
+            CreateMap <Jugador,JugadorDto> ();
+            CreateMap <JugadorDto,Jugador> ();
+
+            CreateMap <Pais,PaisDto> ();
+            CreateMap <PaisDto,Pais> ();
         }
     }
 }

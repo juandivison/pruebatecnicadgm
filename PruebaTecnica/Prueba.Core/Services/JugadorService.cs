@@ -15,9 +15,9 @@ namespace Prueba.Core.Services
             _jugadorService = jugadorRepository;
         }
 
-        public async Task<bool> DeleteJugador(int id)
+        public  bool DeleteJugador(int id)
         {
-            return await _jugadorService.DeleteJugador(id);
+            return  _jugadorService.DeleteJugador(id);
         }
 
         public async Task<Jugador> GetJugador(int id)
@@ -35,9 +35,9 @@ namespace Prueba.Core.Services
             await _jugadorService.InsertJugador(jugador);
         }
 
-        public async Task<bool> UpdateJugador(Jugador jugador)
+        public bool UpdateJugador(Jugador jugador)
         {
-            return await _jugadorService.UpdateJugador(jugador);
+            return  _jugadorService.UpdateJugador(jugador);
         }
 
     }

@@ -5,8 +5,10 @@ using System.Text;
 
 namespace Prueba.Core.DTOS
 {
-    public class EstadoDto : BaseEntity
-    {       
+    public class PaisDto : BaseEntity
+    {
         public string Nombre { get; set; }
+        public string Alpha3Code { get; set; }
+        public string Iso31662 { get; set; }
     }
 }
